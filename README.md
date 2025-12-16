@@ -41,8 +41,7 @@ Players connect over the same Wi‑Fi/network, secretly choose numbers, and lose
 
 git clone https://github.com/nz-ex/king-of-diamonds-lan.git
 
-  cd king-of-diamonds-lan
-
+2. Open the file below.
 ### Windows batch script
 
 There should be a file named `start-lan.bat` in the project folder
