@@ -1,16 +1,50 @@
-# React + Vite
+# King of Diamonds LAN – Alice in Borderland Style
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A LAN-based multiplayer implementation of the King of Diamonds game from Alice in Borderland.  
+Players connect over the same Wi‑Fi/network, secretly choose numbers, and lose health based on how far they are from the target.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
 
-## React Compiler
+- **Operating System**
+  - Windows 10/11 (batch script provided)
+  - macOS / Linux (manual commands supported)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Software**
+  - [Node.js](https://nodejs.org/) v18 or newer
+  - npm (installed automatically with Node.js)
+  - A modern web browser (Chrome, Edge, Firefox, Brave, etc.)
 
-## Expanding the ESLint configuration
+- **Network**
+  - All players must be on the **same local network** (Wi‑Fi or Ethernet)
+  - Firewalls must allow local connections to:
+    - TCP **port 3001** (game server)
+    - TCP **port 5173** (Vite dev server / frontend)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Features
+
+- LAN multiplayer (same Wi‑Fi / local network)
+- Hidden choices (no cheating between players)
+- Target is the average of all choices × 0.8
+- Each player starts with 10 HP
+- Closest player(s) lose 0 HP, everyone else loses 1 HP
+- Simple browser UI built with React + Vite
+
+---
+1. Clone or download this repo
+
+git clone https://github.com/your-username/king-of-diamonds-lan.git
+cd king-of-diamonds-lan
+2. Install dependencies
+
+npm install
+
+text
+
+---
+
+## Installation
+
