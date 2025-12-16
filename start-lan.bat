@@ -4,7 +4,6 @@ echo ========================================
 echo King of Diamonds LAN Multiplayer
 echo ========================================
 echo.
-npm install -D @vitejs/plugin-react
 
 REM Kill existing server
 echo [0/4] Clearing old server...
@@ -35,4 +34,5 @@ npm run dev -- --host 0.0.0.0
 
 echo [4/4] Ready!
 pause
+
 
