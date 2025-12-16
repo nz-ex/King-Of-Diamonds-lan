@@ -11,6 +11,7 @@ function App() {
   const [name, setName] = useState('');
   const [connected, setConnected] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [lastResult, setLastResult] = useState(null);
   const inputRef = useRef();
 
   useEffect(() => {
@@ -30,7 +31,6 @@ function App() {
     });
 
     newSocket.on('players', (data) => {
-      // Always replace with fresh server state
       setPlayers(data || {});
     });
 
@@ -40,15 +40,16 @@ function App() {
       setPhase('round');
       setChoice(25);
       setSubmitted(false);
+      setLastResult(null);
       if (inputRef.current) inputRef.current.focus();
     });
 
     newSocket.on('result', (result) => {
       console.log('Round result:', result);
-      // Show lobby for next round
-      setRound(result.round + 1);
+      setLastResult(result);
       setPhase('lobby');
       setSubmitted(false);
+      setRound(result.round + 1);
     });
 
     setSocket(newSocket);
@@ -90,10 +91,7 @@ function App() {
           onKeyPress={handleKeyPress}
           autoFocus
         />
-        <button
-          onClick={join}
-          disabled={!name.trim() || !connected}
-        >
+        <button onClick={join} disabled={!name.trim() || !connected}>
           Enter Borderland
         </button>
       </div>
@@ -125,6 +123,13 @@ function App() {
         )}
       </div>
 
+      {lastResult && (
+        <div className="last-result">
+          <div>Last target: {lastResult.target}</div>
+          <div>Average × 0.8: {lastResult.avg} → {lastResult.target}</div>
+        </div>
+      )}
+
       {phase === 'lobby' && (
         <button className="big-btn" onClick={startRound}>
           Start Round {round}
@@ -147,10 +152,7 @@ function App() {
             disabled={submitted}
           />
           <div className="choice-value">{choice}</div>
-          <button
-            onClick={submit}
-            disabled={submitted}
-          >
+          <button onClick={submit} disabled={submitted}>
             {submitted ? 'Choice Submitted' : 'Submit Choice'}
           </button>
         </div>
